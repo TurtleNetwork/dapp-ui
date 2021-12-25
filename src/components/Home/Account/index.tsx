@@ -24,12 +24,10 @@ export function centerEllipsis(str: string, symbols = 16) {
 
 export const getNetwork = (url: string) => {
     switch (url) {
-        case 'T':
+        case 'l':
             return 'TestNet';
-        case 'W':
+        case 'L':
             return 'MainNet';
-        case 'S':
-            return 'StageNet';
         default:
             return 'Custom';
     }

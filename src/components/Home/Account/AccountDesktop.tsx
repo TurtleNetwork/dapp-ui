@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import {inject, observer} from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import React from 'react';
 import copyToClipboard from 'copy-to-clipboard';
 import { fonts } from '@src/styles';
@@ -36,11 +36,12 @@ interface IState {
 @observer
 export default class AccountDesktop extends React.Component<IProps, IState> {
     // handleExit = () => window.location.reload();
+
     constructor(props: IProps) {
         super(props);
 
         this.state = {
-            addressType: EAddressType.WAVES,
+            addressType: EAddressType.TN,
             isModalOpen: false
         };
     }
@@ -63,7 +64,7 @@ export default class AccountDesktop extends React.Component<IProps, IState> {
         const addressType = this.state.addressType;
 
         this.setState({
-            addressType: addressType === EAddressType.WAVES ? EAddressType.ETHEREUM : EAddressType.WAVES
+            addressType: addressType === EAddressType.TN ? EAddressType.ETHEREUM : EAddressType.TN
         });
     }
 

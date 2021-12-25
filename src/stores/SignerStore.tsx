@@ -1,13 +1,14 @@
 import {action, observable} from 'mobx';
 import {RootStore} from '@stores';
 import {SubStore} from './SubStore';
-import {Signer} from '@waves/signer';
-import {ProviderWeb} from "@waves.exchange/provider-web";
-import {ProviderCloud} from "@waves.exchange/provider-cloud";
-import ProviderMetamask, {isMetaMaskInstalled} from "@waves/provider-metamask";
+import {Signer} from '@turtlenetwork/signer';
+// import {ProviderWeb} from "@waves.exchange/provider-web";
+// import {ProviderCloud} from "@waves.exchange/provider-cloud";
+import {ProviderKeeper} from "@turtlenetwork/provider-keeper"
+import ProviderMetamask, { isMetaMaskInstalled } from "@waves/provider-metamask";
 import {getExplorerLink, networks, Network, INetwork} from '@utils';
 import {LoginType, ELoginType} from "@src/interface";
-import {waitForTx} from "@waves/waves-transactions";
+import {waitForTx} from "@turtlenetwork/waves-transactions";
 import Decimal from 'decimal.js';
 
 class SignerStore extends SubStore {
@@ -23,35 +24,35 @@ class SignerStore extends SubStore {
         this.loginType = null;
     }
 
-    initSignerWeb = async () => {
-        const network = this.getNetworkByDapp();
-
-        if (network.clientOrigin) {
-            this.signer = new Signer({NODE_URL: network.server});
-            await this.signer.setProvider(new ProviderWeb(network.clientOrigin));
-        } else {
-            this.signer = undefined;
-            this.rootStore.notificationStore.notify(
-                `Unfortunately, Exchange does not support a ${network.server} network at this time. Sign in with Keeper.`,
-                {type: 'error'}
-            )
-        }
-    }
-
-    initSignerCloud = async () => {
-        const network = this.getNetworkByDapp();
-
-        if (network.clientOrigin) {
-            this.signer = new Signer({NODE_URL: network.server});
-            await this.signer.setProvider(new ProviderCloud());
-        } else {
-            this.signer = undefined;
-            this.rootStore.notificationStore.notify(
-                `Unfortunately, Exchange does not support a ${network.server} network at this time. Sign in with Keeper.`,
-                {type: 'error'}
-            )
-        }
-    }
+    // initSignerWeb = async () => {
+    //     const network = this.getNetworkByDapp();
+    //
+    //     if (network.clientOrigin) {
+    //         this.signer = new Signer({NODE_URL: network.server});
+    //         await this.signer.setProvider(new ProviderWeb(network.clientOrigin));
+    //     } else {
+    //         this.signer = undefined;
+    //         this.rootStore.notificationStore.notify(
+    //             `Unfortunately, Exchange does not support a ${network.server} network at this time. Sign in with Keeper.`,
+    //             {type: 'error'}
+    //         )
+    //     }
+    // }
+    //
+    // initSignerCloud = async () => {
+    //     const network = this.getNetworkByDapp();
+    //
+    //     if (network.clientOrigin) {
+    //         this.signer = new Signer({NODE_URL: network.server});
+    //         await this.signer.setProvider(new ProviderCloud());
+    //     } else {
+    //         this.signer = undefined;
+    //         this.rootStore.notificationStore.notify(
+    //             `Unfortunately, Exchange does not support a ${network.server} network at this time. Sign in with Keeper.`,
+    //             {type: 'error'}
+    //         )
+    //     }
+    // }
 
     initSignerMetamask = async () => {
         if (!isMetaMaskInstalled()) {
@@ -62,8 +63,8 @@ class SignerStore extends SubStore {
         const network = this.getNetworkByDapp();
 
         // todo Remove after release metamask in mainnet
-        if (network.code === 'W') {
-            this.rootStore.notificationStore.notify('Network is not supported for Metamask', {type: 'error'});
+        if (network.code === 'L' || network.code === 'l') {
+            this.rootStore.notificationStore.notify('Network is not supported for Metamask', { type: 'error' });
             return;
         }
 
@@ -82,8 +83,8 @@ class SignerStore extends SubStore {
     login = async (type: LoginType) => {
         this.loginType = type;
 
-        if (type === LoginType.SEED) await this.initSignerWeb();
-        if (type === LoginType.EMAIL) await this.initSignerCloud();
+        // if (type === LoginType.SEED) await this.initSignerWeb();
+        // if (type === LoginType.EMAIL) await this.initSignerCloud();
         if (type === LoginType.METAMASK) await this.initSignerMetamask();
 
         if (!this.signer) {

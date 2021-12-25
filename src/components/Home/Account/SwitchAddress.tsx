@@ -26,7 +26,7 @@ export class SwitchAddress extends React.Component<IProps> {
         return (
             <Wrap onClick={this.props.onClick}>
                 {
-                    this.props.type === EAddressType.WAVES
+                    this.props.type === EAddressType.TN
                     ? <IconWaves />
                     : <IconEthereum />
                 }

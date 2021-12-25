@@ -20,7 +20,7 @@ interface IProps {
 export default class EmptyDapp extends React.Component<IProps> {
     render() {
         return <div css={style}>
-            <img src="https://wavesexplorer.com/images/erroring-88.905d816e1748ea540e287c909dc82195.svg" alt={'Empty'}/>
+            <img src="https://explorer.turtlenetwork.eu/images/erroring-88.905d816e1748ea540e287c909dc82195.svg" alt={'Empty'}/>
             {this.props.description}
         </div>
     }

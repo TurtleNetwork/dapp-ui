@@ -1,6 +1,6 @@
 import {SubStore} from '@stores/SubStore';
 import {action, autorun, observable, set} from 'mobx';
-import {nodeInteraction, waitForTx} from '@waves/waves-transactions';
+import {nodeInteraction, waitForTx} from '@turtlenetwork/waves-transactions';
 import {RootStore} from '@stores/RootStore';
 import {getCurrentBrowser, getExplorerLink} from '@utils/index';
 import {ELoginType} from '@src/interface';
@@ -56,7 +56,7 @@ class KeeperStore extends SubStore {
 
     @action
     login = async () => {
-        const resp = window['WavesKeeper'].publicState();
+        const resp = window['TurtleShell'].publicState();
         const publicState = await resp;
         if (publicState.account && publicState.account.address) {
             this.updateNetwork(publicState)
@@ -123,7 +123,7 @@ class KeeperStore extends SubStore {
                     //     link: 'https://wavesplatform.com/technology/keeper',
                     //     linkTitle: 'install waves keeper'
                     // });
-                } else if (window['WavesKeeper']) {
+                } else if (window['TurtleShell']) {
                     reaction.dispose();
                     this.isWavesKeeperInstalled = true;
                 } else {
@@ -136,7 +136,7 @@ class KeeperStore extends SubStore {
 
     @action
     setupSynchronizationWithWavesKeeper = () => {
-        window['WavesKeeper'].initialPromise
+        window['TurtleShell'].initialPromise
             .then((keeperApi: any) => {
                 this.isWavesKeeperInitialized = true;
                 return keeperApi;
@@ -162,7 +162,7 @@ class KeeperStore extends SubStore {
 
 
     subscribeToWavesKeeperUpdate() {
-        window['WavesKeeper'].on('update', async (publicState: any) => {
+        window['TurtleShell'].on('update', async (publicState: any) => {
             this.updateWavesKeeper(publicState).catch(e => {
                 this.rootStore.notificationStore.notify(e, {type: 'error'});
                 console.error(e);
@@ -171,7 +171,7 @@ class KeeperStore extends SubStore {
     }
 
 
-    sendTx = (tx: any) => window['WavesKeeper'].signAndPublishTransaction(tx).then(async (tx: any) => {
+    sendTx = (tx: any) => window['TurtleShell'].signAndPublishTransaction(tx).then(async (tx: any) => {
         const transaction = JSON.parse(tx);
         const {network} = this.rootStore.accountStore;
         const {notificationStore} = this.rootStore

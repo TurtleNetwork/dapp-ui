@@ -89,7 +89,7 @@ export class Card extends React.Component<IProps, IState> {
 
     handleAddAttach = () => this.state.payments.length < 10 && this.setState({
         payments: [...this.state.payments, {
-            assetId: 'WAVES',
+            assetId: 'TN',
             tokens: (0).toFixed(8)
         }]
     });

@@ -38,7 +38,7 @@ export default class AccountMobile extends React.Component<IProps, IState> {
         super(props);
 
         this.state = {
-            addressType: EAddressType.WAVES
+            addressType: EAddressType.TN
         };
     }
 
@@ -50,7 +50,7 @@ export default class AccountMobile extends React.Component<IProps, IState> {
         const addressType = this.state.addressType;
 
         this.setState({
-            addressType: addressType === EAddressType.WAVES ? EAddressType.ETHEREUM : EAddressType.WAVES
+            addressType: addressType === EAddressType.TN ? EAddressType.ETHEREUM : EAddressType.TN
         });
     }
 

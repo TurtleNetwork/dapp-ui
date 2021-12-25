@@ -10,7 +10,7 @@ import { ELoginType } from '@src/interface';
 import {SubStore} from './SubStore';
 
 class AccountStore extends SubStore {
-    @observable assets: { [name: string]: IAsset } = {'WAVES': {name: 'WAVES', assetId: 'WAVES', decimals: 8}};
+    @observable assets: { [name: string]: IAsset } = {'TN': {name: 'TN', assetId: 'TN', decimals: 8}};
     @observable scripted = false;
     @observable network: INetwork | null = null;
     @observable address: string | null = null;
@@ -27,7 +27,7 @@ class AccountStore extends SubStore {
     }
 
     @computed get fee() {
-        return this.scripted ? '0.009' : '0.005';
+        return this.scripted ? '0.1' : '0.06';
     }
 
     @action
@@ -69,7 +69,7 @@ class AccountStore extends SubStore {
 
         if ('balances' in assets && !assets.balances.some(x => x.issueTransaction === null)) {
             this.rootStore.accountStore.assets = {
-                'WAVES': {name: 'WAVES', assetId: 'WAVES', decimals: 8},
+                'TN': {name: 'TN', assetId: 'TN', decimals: 8},
                 ...assets.balances.reduce((acc, {assetId, issueTransaction: {name, decimals}}) =>
                     ({...acc, [assetId]: {assetId, name, decimals}}), {}),
             }

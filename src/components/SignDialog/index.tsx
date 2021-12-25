@@ -108,20 +108,20 @@ export default class SignDialog extends React.Component <IProps> {
             );
     };
 
-    handleSignWithExchangeSeed = () => {
-        this.handleCloseDialog();
-        this.props.signerStore!.login(LoginType.SEED);
-    };
-
-    handleSignWithExchangeMail = () => {
-        this.handleCloseDialog();
-        this.props.signerStore!.login(LoginType.EMAIL);
-    };
-
-    handleSignWithMetamask = () => {
-        this.handleCloseDialog();
-        this.props.signerStore!.login(LoginType.METAMASK);
-    };
+    // handleSignWithExchangeSeed = () => {
+    //     this.handleCloseDialog();
+    //     this.props.signerStore!.login(LoginType.SEED);
+    // };
+    //
+    // handleSignWithExchangeMail = () => {
+    //     this.handleCloseDialog();
+    //     this.props.signerStore!.login(LoginType.EMAIL);
+    // };
+    //
+    // handleSignWithMetamask = () => {
+    //     this.handleCloseDialog();
+    //     this.props.signerStore!.login(LoginType.METAMASK);
+    // };
 
     handleClickOutside = (event: any) => {
         const path = event.path || event.composedPath();
@@ -150,21 +150,21 @@ export default class SignDialog extends React.Component <IProps> {
                                 : 'Waves Keeper doesn’t support this browser'
                         }</Description>
                     </div>
-                    <div>
-                        <Button css={css`width: 100%`} onClick={this.handleSignWithExchangeSeed} >
-                            Sign in with Exchange(Seed)</Button>
-                        <Description><br/>The network will be MainNet by default</Description>
-                    </div>
-                    <div>
-                        <Button css={css`width: 100%`} onClick={this.handleSignWithExchangeMail} >
-                            Sign in with Exchange(Email)</Button>
-                        <Description><br/>The network will be MainNet by default</Description>
-                    </div>
-                    <div>
-                        <Button css={css`width: 100%`} onClick={this.handleSignWithMetamask} >
-                            Sign in with Metamask</Button>
-                        <Description><br/>The network will get from matamask plugin</Description>
-                    </div>
+                    {/*<div>*/}
+                    {/*    <Button css={css`width: 100%`} onClick={this.handleSignWithExchangeSeed} >*/}
+                    {/*        Sign in with Exchange(Seed)</Button>*/}
+                    {/*    <Description><br/>The network will be MainNet by default</Description>*/}
+                    {/*</div>*/}
+                    {/*<div>*/}
+                    {/*    <Button css={css`width: 100%`} onClick={this.handleSignWithExchangeMail} >*/}
+                    {/*        Sign in with Exchange(Email)</Button>*/}
+                    {/*    <Description><br/>The network will be MainNet by default</Description>*/}
+                    {/*</div>*/}
+                    {/*<div>*/}
+                    {/*    <Button css={css`width: 100%`} onClick={this.handleSignWithMetamask} >*/}
+                    {/*        Sign in with Metamask</Button>*/}
+                    {/*    <Description><br/>The network will get from matamask plugin</Description>*/}
+                    {/*</div>*/}
                 </Body>
             </Dialog>
         </Overlay>;

@@ -69,5 +69,5 @@ declare module 'rc-select';
 declare module 'rc-tooltip';
 declare module 'react-scroll-into-view';
 declare interface Window {
-    WavesKeeper: any
+    TurtleShell: any
 }
