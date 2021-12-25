@@ -147,7 +147,7 @@ export default class SignDialog extends React.Component <IProps> {
                             <br/>{
                             isKeeper
                                 ? 'The network will be chosen in WavesKeeper by user'
-                                : 'Waves Keeper doesn’t support this browser'
+                                : 'TurtleShell Keeper doesn’t support this browser'
                         }</Description>
                     </div>
                     {/*<div>*/}
