@@ -141,7 +141,7 @@ export default class SignDialog extends React.Component <IProps> {
                 <Body>
                     <div>
                         <Button css={css`width: 100%`} onClick={this.handleSignWithKeeper} disabled={!isKeeper}>
-                            Sign in with Keeper
+                            Sign in with TurtleShell
                         </Button>
                         <Description css={!isKeeper && css`color: #EF7362`}>
                             <br/>{
