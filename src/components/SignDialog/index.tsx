@@ -146,7 +146,7 @@ export default class SignDialog extends React.Component <IProps> {
                         <Description css={!isKeeper && css`color: #EF7362`}>
                             <br/>{
                             isKeeper
-                                ? 'The network will be chosen in WavesKeeper by user'
+                                ? 'The network will be chosen in TurtleShell by user'
                                 : 'TurtleShell Keeper doesn’t support this browser'
                         }</Description>
                     </div>
