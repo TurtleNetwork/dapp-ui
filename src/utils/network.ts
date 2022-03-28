@@ -16,7 +16,7 @@ export enum ENetworkByte {
 
 export const networks = {
     'testnet': {
-        server: 'https://testnet.cluster.tnnode.turtlenetwork.eu',
+        server: 'https://cluster.testnet.tnnode.turtlenetwork.eu',
         code: 'l',
         clientOrigin: 'https://testnet.wallet.turtlenetwork.eu/signer/'
     },
