@@ -9,7 +9,7 @@ import NotificationStore from "@stores/NotificationStore";
 import Close from "@src/assets/icons/Close";
 import {SignedTransaction, InvokeScriptTransaction} from "@waves/ts-types";
 import {SignerStore} from "@stores";
-import {broadcast, waitForTx} from "@waves/waves-transactions";
+import {broadcast, waitForTx} from "@turtlenetwork/waves-transactions";
 import {getExplorerLink} from "@utils";
 
 const Root = styled.div`

@@ -194,7 +194,7 @@ class KeeperStore extends SubStore {
     })
 
 
-    buildTx = (tx: any) => window['WavesKeeper'].signTransaction(tx).then((tx: any) => JSON.parse(tx)).catch((error: any) => {
+    buildTx = (tx: any) => window['TurtleShell'].signTransaction(tx).then((tx: any) => JSON.parse(tx)).catch((error: any) => {
         console.error(error);
         this.rootStore.notificationStore.notify(!!error.data ? error.data.toString() : error.data, {type: 'error', title: error.message});
     })
