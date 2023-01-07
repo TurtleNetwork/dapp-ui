@@ -121,7 +121,7 @@ class DappStore extends SubStore {
                 function: func,
                 args
             },
-            fee: {tokens: this.rootStore.accountStore.fee, assetId: 'WAVES'},
+            fee: {tokens: this.rootStore.accountStore.fee, assetId: 'TN'},
             payment
         };
 
